@@ -24,6 +24,30 @@
       ],
       "sz-soochi/*": [
         "dist/sz-soochi/*"
+      ],
+      "@sz-soochi": [
+        "projects/sz-soochi"
+      ],
+      "@sz-soochi/*": [
+        "projects/sz-soochi/*"
+      ],
+      "@sz-forms": [
+        "projects/sz-forms"
+      ],
+      "@sz-forms/*": [
+        "projects/sz-forms/*"
+      ],
+      "sz-forms": [
+        "dist/sz-forms"
+      ],
+      "sz-forms/*": [
+        "dist/sz-forms/*"
+      ],
+      "@sz-input": [
+        "projects/sz-input"
+      ],
+      "@sz-input/*": [
+        "projects/sz-input/*"
       ]
     }
   }

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-SzSoochi',
+  selector: 'sz-lib-input',
   template: `
     <p>
-      sz-soochi works!
+      sz-input works!
     </p>
   `,
   styles: []
 })
-export class SzSoochiComponent implements OnInit {
+export class SzInputComponent implements OnInit {
 
   constructor() { }
 

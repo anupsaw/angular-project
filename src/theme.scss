@@ -1,0 +1,39 @@
+$dark: (context: 'sz-theme-dark', textColor: white,
+    backgroundColor: black);
+
+$light: (context: 'sz-theme-light', textColor: #002144,
+    background: gray);
+
+$leaf: (dark:$dark, light:$light);
+
+$test: join($dark, $light); // make one list
+
+$test1: $dark,
+$light;
+
+
+@mixin for-each($themes...) {
+
+    //  @debug keywords($themes);
+    @each $theme in $themes {
+      //  @debug keywords($name);
+         $context: map-get($theme, 'context');
+        @debug 'test #{$context}';
+
+        .#{$context} {
+            $color: map-get($theme, 'textColor');
+            color: $color;
+        }
+
+        @debug 'complete';
+    }
+
+    // .test {
+    //     color: map-get($theme, 'textColor');
+    // }
+
+}
+
+//@include for-each($test1)
+@include for-each($dark, $light);
+@include for-each($light);

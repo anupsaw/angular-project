@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SzSoochiComponent } from './sz-soochi.component';
+import { SzSoochiComponent } from './components/soochi/sz-soochi.component';
 
 @NgModule({
   declarations: [SzSoochiComponent],

@@ -122,9 +122,14 @@
     },
     "SzSoochi": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/sz-soochi",
       "sourceRoot": "projects/sz-soochi/src",
-      "prefix": "lib",
+      "prefix": "sz",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -147,6 +152,81 @@
             "tsConfig": [
               "projects/sz-soochi/tsconfig.lib.json",
               "projects/sz-soochi/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "SzForms": {
+      "projectType": "library",
+      "root": "projects/sz-forms",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "sourceRoot": "projects/sz-forms/src",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sz-forms/tsconfig.lib.json",
+            "project": "projects/sz-forms/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sz-forms/src/test.ts",
+            "tsConfig": "projects/sz-forms/tsconfig.spec.json",
+            "karmaConfig": "projects/sz-forms/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sz-forms/tsconfig.lib.json",
+              "projects/sz-forms/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "SzInput": {
+      "projectType": "library",
+      "root": "projects/sz-input",
+      "sourceRoot": "projects/sz-input/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sz-input/tsconfig.lib.json",
+            "project": "projects/sz-input/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sz-input/src/test.ts",
+            "tsConfig": "projects/sz-input/tsconfig.spec.json",
+            "karmaConfig": "projects/sz-input/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sz-input/tsconfig.lib.json",
+              "projects/sz-input/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

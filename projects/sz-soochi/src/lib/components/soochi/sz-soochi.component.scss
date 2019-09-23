@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+
+    div {
+        display: flex;
+    }
+}
+
+.sz-table {
+    flex: 1 1 auto;
+    flex-direction: column;
+    .sz-table-head .sz-table-body {
+
+        flex: 1 1 auto;
+
+
+        .sz-table-cell {
+            flex-direction: row;
+        }
+
+        .sz-table-row {
+            flex-direction: row;
+        }
+    }
+}
