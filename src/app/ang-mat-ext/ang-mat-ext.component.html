@@ -1,0 +1,10 @@
+<div [formGroup]="angMatForm">
+    <mat-form-field matError>
+        <mat-label>Name:</mat-label>
+        <input matInput required formControlName="name" />
+        <mat-error>Name is required</mat-error>
+    </mat-form-field>
+
+
+    <button (click)="printForm()">Print Form Data</button>
+</div>
