@@ -48,6 +48,12 @@
       ],
       "@sz-input/*": [
         "projects/sz-input/*"
+      ],
+      "angular-material-ext": [
+        "dist/angular-material-ext"
+      ],
+      "angular-material-ext/*": [
+        "dist/angular-material-ext/*"
       ]
     }
   }
