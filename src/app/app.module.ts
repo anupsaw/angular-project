@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SzInputModule } from '@sahaz/mool';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { SzSoochiModule } from '@sz-soochi';
-import { SzFormsModule } from '@sz-forms'
-import {MatBadgeModule} from '@angular/material';
+import { MatBadgeModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -14,9 +14,8 @@ import {MatBadgeModule} from '@angular/material';
   ],
   imports: [
     BrowserModule,
-    SzSoochiModule,
-    SzFormsModule,
     MatBadgeModule,
+    SzInputModule,
     AppRoutingModule
   ],
   providers: [],

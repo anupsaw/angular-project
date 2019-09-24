@@ -9,6 +9,10 @@
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "importHelpers": true,
     "target": "es2015",
     "typeRoots": [
@@ -19,35 +23,23 @@
       "dom"
     ],
     "paths": {
-      "sz-soochi": [
-        "dist/sz-soochi"
+      "@sahaz/mool": [
+        "sahaz/mool"
       ],
-      "sz-soochi/*": [
-        "dist/sz-soochi/*"
+      "@sahaz/mool/*": [
+        "sahaz/mool/*"
       ],
-      "@sz-soochi": [
-        "projects/sz-soochi"
+      "@sahaz/ansh": [
+        "sahaz/ansh"
       ],
-      "@sz-soochi/*": [
-        "projects/sz-soochi/*"
+      "@sahaz/ansh/*": [
+        "sahaz/ansh/*"
       ],
-      "@sz-forms": [
-        "projects/sz-forms"
+      "@sahaz/kand": [
+        "sahaz/kand"
       ],
-      "@sz-forms/*": [
-        "projects/sz-forms/*"
-      ],
-      "sz-forms": [
-        "dist/sz-forms"
-      ],
-      "sz-forms/*": [
-        "dist/sz-forms/*"
-      ],
-      "@sz-input": [
-        "projects/sz-input"
-      ],
-      "@sz-input/*": [
-        "projects/sz-input/*"
+      "@sahaz/kand/*": [
+        "sahaz/kand/*"
       ]
     }
   }
