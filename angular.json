@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "sahaz",
   "projects": {
     "sahez": {
       "projectType": "application",
@@ -120,38 +120,41 @@
         }
       }
     },
-    "SzSoochi": {
+    "mool": {
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "export": true,
+          "viewEncapsulation": "None",
+          "changeDetection": "OnPush"
         }
       },
-      "root": "projects/sz-soochi",
-      "sourceRoot": "projects/sz-soochi/src",
+      "root": "sahaz/mool",
+      "sourceRoot": "sahaz/mool/src",
       "prefix": "sz",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/sz-soochi/tsconfig.lib.json",
-            "project": "projects/sz-soochi/ng-package.json"
+            "tsConfig": "sahaz/mool/tsconfig.lib.json",
+            "project": "sahaz/mool/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/sz-soochi/src/test.ts",
-            "tsConfig": "projects/sz-soochi/tsconfig.spec.json",
-            "karmaConfig": "projects/sz-soochi/karma.conf.js"
+            "main": "sahaz/mool/src/test.ts",
+            "tsConfig": "sahaz/mool/tsconfig.spec.json",
+            "karmaConfig": "sahaz/mool/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/sz-soochi/tsconfig.lib.json",
-              "projects/sz-soochi/tsconfig.spec.json"
+              "sahaz/mool/tsconfig.lib.json",
+              "sahaz/mool/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -160,38 +163,41 @@
         }
       }
     },
-    "SzForms": {
+    "ansh": {
       "projectType": "library",
-      "root": "projects/sz-forms",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "export": true,
+          "viewEncapsulation": "None",
+          "changeDetection": "OnPush"
         }
       },
-      "sourceRoot": "projects/sz-forms/src",
-      "prefix": "",
+      "root": "sahaz/ansh",
+      "sourceRoot": "sahaz/ansh/src",
+      "prefix": "sz",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/sz-forms/tsconfig.lib.json",
-            "project": "projects/sz-forms/ng-package.json"
+            "tsConfig": "sahaz/ansh/tsconfig.lib.json",
+            "project": "sahaz/ansh/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/sz-forms/src/test.ts",
-            "tsConfig": "projects/sz-forms/tsconfig.spec.json",
-            "karmaConfig": "projects/sz-forms/karma.conf.js"
+            "main": "sahaz/ansh/src/test.ts",
+            "tsConfig": "sahaz/ansh/tsconfig.spec.json",
+            "karmaConfig": "sahaz/ansh/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/sz-forms/tsconfig.lib.json",
-              "projects/sz-forms/tsconfig.spec.json"
+              "sahaz/ansh/tsconfig.lib.json",
+              "sahaz/ansh/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -200,33 +206,41 @@
         }
       }
     },
-    "SzInput": {
+    "kand": {
       "projectType": "library",
-      "root": "projects/sz-input",
-      "sourceRoot": "projects/sz-input/src",
-      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "export": true,
+          "viewEncapsulation": "None",
+          "changeDetection": "OnPush"
+        }
+      },
+      "root": "sahaz/kand",
+      "sourceRoot": "sahaz/kand/src",
+      "prefix": "sz",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/sz-input/tsconfig.lib.json",
-            "project": "projects/sz-input/ng-package.json"
+            "tsConfig": "sahaz/kand/tsconfig.lib.json",
+            "project": "sahaz/kand/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/sz-input/src/test.ts",
-            "tsConfig": "projects/sz-input/tsconfig.spec.json",
-            "karmaConfig": "projects/sz-input/karma.conf.js"
+            "main": "sahaz/kand/src/test.ts",
+            "tsConfig": "sahaz/kand/tsconfig.spec.json",
+            "karmaConfig": "sahaz/kand/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/sz-input/tsconfig.lib.json",
-              "projects/sz-input/tsconfig.spec.json"
+              "sahaz/kand/tsconfig.lib.json",
+              "sahaz/kand/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -234,6 +248,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "sahez"
 }

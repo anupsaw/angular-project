@@ -1,0 +1,11 @@
+{
+    "bundlerOptions": {
+        "entryFile": "./sahaz/kand/src/_kand.theme.scss",
+        "rootDir": "./sahaz/kand/",
+        "outFile": "./node_modules/@sahaz/kand/_kand.theme.scss",
+        "ignoreImports": [
+            "~@angular/.*"
+        ],
+        "logLevel": "silent"
+    }
+}

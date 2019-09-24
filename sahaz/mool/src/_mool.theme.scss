@@ -1,0 +1,7 @@
+@import './lib//input/input.component';
+@import './lib//select/select.component';
+
+@mixin sz-mool-theme($theme) {
+    @include sz-input($theme);
+    @include sz-select($theme);
+}

@@ -1,0 +1,11 @@
+{
+    "bundlerOptions": {
+        "entryFile": "./sahaz/mool/src/_mool.theme.scss",
+        "rootDir": "./sahaz/mool/",
+        "outFile": "./node_modules/@sahaz/mool/_mool.theme.scss",
+        "ignoreImports": [
+            "~@angular/.*"
+        ],
+        "logLevel": "silent"
+    }
+}

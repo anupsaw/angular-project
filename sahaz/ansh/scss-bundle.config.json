@@ -1,0 +1,14 @@
+{
+    "bundlerOptions": {
+        "entryFile": "./sahaz/ansh/src/_ansh.theme.scss",
+        "rootDir": "./sahaz/ansh/",
+        "outFile": ".node_modules/@sahaz/ansh/_ansh.theme.scss",
+        "ignoreImports": [
+            "~@angular/.*"
+        ],
+        "includePaths": [
+            "./node_modules"
+        ],
+        "logLevel": "trace"
+    }
+}
