@@ -1,0 +1,31 @@
+:host {
+    flex-direction: column;
+    align-items: center;
+
+    *,
+    & {
+        width: 100%;
+        display: flex;
+    }
+
+    header {
+        height: 80px;
+        background-color: cornflowerblue;
+        padding: 0 20px;
+        box-sizing: border-box;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 60%;
+        max-width: 600px;
+        align-items: center;
+        flex: 1 0 auto;
+
+        p {
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+}
