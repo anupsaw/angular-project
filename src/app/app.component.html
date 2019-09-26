@@ -1,1 +1,10 @@
-<header class="test"></header>
+<header class="test">Material Lib</header>
+<div class="container"
+     [formGroup]="mainForm">
+    <sz-input type="text"
+              formControlName="name"
+              label="Name"
+              required="true"></sz-input>
+    <sz-select formControlName="state"
+               label="State"></sz-select>
+</div>

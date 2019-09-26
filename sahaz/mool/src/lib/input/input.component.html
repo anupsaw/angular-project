@@ -1,1 +1,11 @@
-<p>input works!</p>
+<mat-form-field matError>
+    <mat-label *ngIf='label'>{{label}}</mat-label>
+    <input matInput
+           [type]='type'
+           [id]=id
+           [placeholder]="placeholder"
+           [formControlName]="formControlName"
+           [required]="required"
+           [value]="value" />
+    <mat-error [message]="'Test'"></mat-error>
+</mat-form-field>

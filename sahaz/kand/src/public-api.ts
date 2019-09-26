@@ -2,6 +2,6 @@
  * Public API Surface of kand
  */
 
-export * from './lib/kand.service';
-export * from './lib/kand.component';
-export * from './lib/kand.module';
+export * from './lib/abstract/base-control.abtract';
+export * from './lib/models/control';
+export * from './lib/error/error.module';
