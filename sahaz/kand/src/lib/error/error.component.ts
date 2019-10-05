@@ -1,22 +1,25 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input } from '@angular/core';
-import { MatControlError } from './error-message.registry';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, ViewContainerRef } from '@angular/core';
+import { SzControlError } from './error-message.registry';
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: 'mat-error',
-  template: `<div>{{message}}</div>`,
+  selector: 'sz-error',
+  template: `<div>{{message}}<ng-content></ng-content></div>`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SzErrorComponent implements OnInit, MatControlError {
+export class SzErrorComponent implements OnInit, SzControlError {
 
   @Input() type: string;
   @Input() message: string;
   @Input() priority: number;
+  @Input() value?: any;
 
-  constructor() { }
+  constructor(private readonly container: ViewContainerRef) { }
 
   public ngOnInit() {
   }
 
+  public destroy(): void {
+    this.container.clear();
+  }
 }

@@ -3,4 +3,5 @@
  */
 
 export * from './lib/input/input.module';
+export * from './lib/select/select.module';
 

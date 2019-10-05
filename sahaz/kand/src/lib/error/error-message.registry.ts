@@ -1,50 +1,42 @@
-import { InjectionToken, ValueProvider } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 
-export const MAT_ERROR_MESSAGE_REGISTRY = new InjectionToken<MatControlError>('mat-error-message-registry-token');
+export const SZ_ERROR_MESSAGE_REGISTRY = new InjectionToken<SzControlError>('mat-error-message-registry-token');
 
-export class MatControlError {
+export class SzControlError {
     type: string;
     message: string;
     priority: number;
+    value?: any;
 
-    public static create(type: string, message: string, priority?: number): MatControlError {
-        const error = new MatControlError();
+    public static create(type: string, message: string, priority?: number, value?: any): SzControlError {
+        const error = new SzControlError();
         error.type = type;
         error.message = message;
         error.priority = priority || 0;
+        error.value = value;
         return error;
-    }
-
-    public static messageRegistryProvider(type: string, message: string, priority?: number): ValueProvider {
-
-        return {
-            provide: MAT_ERROR_MESSAGE_REGISTRY,
-            useValue: MatControlError.create(type, message, priority),
-            multi: true
-        };
-
     }
 }
 
 export const matCommonErrorMessagesProvider = [
     {
-        provide: MAT_ERROR_MESSAGE_REGISTRY,
-        useValue: MatControlError.create('required', '{0} is required'),
+        provide: SZ_ERROR_MESSAGE_REGISTRY,
+        useValue: SzControlError.create('required', '{0} is required'),
         multi: true
     },
     {
-        provide: MAT_ERROR_MESSAGE_REGISTRY,
-        useValue: MatControlError.create('minlength', '{0} must have at least {1} characters'),
+        provide: SZ_ERROR_MESSAGE_REGISTRY,
+        useValue: SzControlError.create('minlength', '{0} must have at least {1} characters'),
         multi: true
     },
     {
-        provide: MAT_ERROR_MESSAGE_REGISTRY,
-        useValue: MatControlError.create('maxlength', '{0} must have at max {1} characters'),
+        provide: SZ_ERROR_MESSAGE_REGISTRY,
+        useValue: SzControlError.create('maxlength', '{0} must have at max {1} characters'),
         multi: true
     },
     {
-        provide: MAT_ERROR_MESSAGE_REGISTRY,
-        useValue: MatControlError.create('email', '{0} is not valid.'),
+        provide: SZ_ERROR_MESSAGE_REGISTRY,
+        useValue: SzControlError.create('email', '{0} is not valid.'),
         multi: true
     }
 ];

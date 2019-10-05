@@ -1,1 +1,13 @@
-<p>select works!</p>
+<mat-form-field matError>
+    <mat-label *ngIf='label'>{{label}}</mat-label>
+    <select matNativeControl
+            [id]=id
+            [placeholder]="placeholder"
+            [formControlName]="formControlName"
+            [required]="required"
+            [value]="value">
+        <option *ngFor="let option of options"
+                [value]="option.value">{{option.description}}</option>
+    </select>
+    <mat-error>errorMessage</mat-error>
+</mat-form-field>

@@ -4,7 +4,11 @@
     <sz-input type="text"
               formControlName="name"
               label="Name"
-              required="true"></sz-input>
-    <sz-select formControlName="state"
-               label="State"></sz-select>
+              required="true">
+        <sz-error type='required'
+                       [message]='"errorMessage"'></sz-error>
+        <!-- <mat-error></mat-error> -->
+    </sz-input>
+    <!-- <sz-select formControlName="state"
+               label="State"></sz-select> -->
 </div>
