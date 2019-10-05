@@ -1,7 +1,7 @@
-import { SzBaseControlProperty } from '../abstract/base-control-properties.abtract';
+import { SzBaseFormControlProperty } from '../abstract/base-form-control-properties.abstract';
 
-export class SzControl extends SzBaseControlProperty {
-    constructor(obj: Partial<SzBaseControlProperty>) {
+export class SzControl extends SzBaseFormControlProperty {
+    constructor(obj: Partial<SzBaseFormControlProperty>) {
         super();
         for (const key in obj) {
             if (key) {

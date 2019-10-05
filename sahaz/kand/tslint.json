@@ -12,6 +12,7 @@
       "element",
       "sz",
       "kebab-case"
-    ]
+    ],
+    "no-unused-expression": false
   }
 }

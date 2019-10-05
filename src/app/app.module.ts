@@ -3,12 +3,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { SzInputModule } from '@sahaz/mool';
+import { SzErrorModule } from '@sahaz/kand';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MatBadgeModule } from '@angular/material';
-import { SzSelectModule } from '@sahaz/mool/src/lib/select/select.module';
+import { SzSelectModule } from '@sahaz/mool';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     MatBadgeModule,
+    SzErrorModule,
     SzInputModule,
     SzSelectModule,
     ReactiveFormsModule,
