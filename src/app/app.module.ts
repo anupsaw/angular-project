@@ -12,6 +12,7 @@ import { MatBadgeModule } from '@angular/material';
 import { SzSelectModule } from '@sahaz/mool';
 import { SzFormModule } from '@sahaz/ansh';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfigFormUiModule } from './config-form-ui/config-form-ui.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SzFormModule,
     SzSelectModule,
     ReactiveFormsModule,
+    ConfigFormUiModule,
     AppRoutingModule
   ],
   providers: [],

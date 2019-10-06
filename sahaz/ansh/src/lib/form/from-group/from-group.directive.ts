@@ -1,13 +1,12 @@
 import {
   Directive, Input, Output, EventEmitter,
   ComponentFactoryResolver, ViewContainerRef,
-  OnInit, ComponentRef, Type, NgZone, AfterViewInit, ChangeDetectorRef
+  OnInit, ComponentRef, Type
 } from '@angular/core';
 import { SzFormControl } from '@sahaz/kand';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SzInputComponent } from '@sahaz/mool/src/lib/input/input.component';
 import { SzSelectComponent } from '@sahaz/mool/src/lib/select/select.component';
-import { first } from 'rxjs/internal/operators/first';
 
 export const enum SzAction {
   Added = 'added',
@@ -48,7 +47,7 @@ export type SzFormElement = SzInputComponent | SzSelectComponent;
 @Directive({
   selector: '[szFormGroup]'
 })
-export class SzFromGroupDirective implements OnInit, AfterViewInit {
+export class SzFromGroupDirective implements OnInit {
   @Input() public controlProps: SzFormControl & SzControlDynamicProps;
   @Input() public controlFormGroup: FormGroup;
 
@@ -58,21 +57,10 @@ export class SzFromGroupDirective implements OnInit, AfterViewInit {
   constructor(
     private readonly resolver: ComponentFactoryResolver,
     private readonly container: ViewContainerRef,
-    private readonly zone: NgZone,
-    private readonly cd: ChangeDetectorRef
   ) { }
 
   public ngOnInit(): void {
     this.create();
-  }
-
-  ngAfterViewInit(): void {
-    // this.create();
-    // // this.zone.onStable.pipe(first()).subscribe(() => {
-    // //   // your code here
-    // //   this.create();
-    // //   this.cd.detectChanges();
-    // // });
   }
 
   private create(): void {

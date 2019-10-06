@@ -124,8 +124,9 @@
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
+          "inlineStyle": true,
           "export": true,
+          "spec": false,
           "viewEncapsulation": "None",
           "changeDetection": "OnPush"
         }
@@ -170,6 +171,7 @@
           "style": "scss",
           "inlineStyle": true,
           "export": true,
+          "spec": false,
           "viewEncapsulation": "None",
           "changeDetection": "OnPush"
         }
@@ -213,6 +215,7 @@
         "@schematics/angular:component": {
           "inlineStyle": true,
           "export": true,
+          "spec": false,
           "viewEncapsulation": "None",
           "changeDetection": "OnPush"
         }
