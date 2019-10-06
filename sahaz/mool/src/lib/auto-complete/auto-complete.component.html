@@ -1,1 +1,25 @@
-<p>auto-complete works!</p>
+<div>
+    <mat-form-field [szError]="error">
+        <mat-label *ngIf='label'>{{label}}</mat-label>
+        <input matInput
+               [type]='type'
+               [id]=id
+               [placeholder]="placeholder"
+               [formControlName]="formControlName"
+               [name]="name || formControlName"
+               [required]="required"
+               [matAutocomplete]="auto"
+               [value]="value"
+               [ngClass]="classList" />
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options"
+                        [value]="option.value">
+                <span>{{option.description}}</span>
+            </mat-option>
+        </mat-autocomplete>
+        <mat-error>{{errorMessage}}</mat-error>
+        <mat-hint>{{hint}}</mat-hint>
+    </mat-form-field>
+
+    <ng-content select="sz-error"></ng-content>
+</div>

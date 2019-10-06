@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, Optional, Self } from '@angular/core';
-import { SzBaseFormControl, SZ_NG_CONTROL_PROVIDER, SZ_CONTROL_CONTAINER_PROVIDER } from '@sahaz/kand';
+import { SzBaseFormControl, SZ_NG_CONTROL_PROVIDER, SZ_CONTROL_CONTAINER_PROVIDER, SzOption } from '@sahaz/kand';
 import { NgControl } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import { NgControl } from '@angular/forms';
 })
 export class SzSelectComponent extends SzBaseFormControl implements OnInit {
 
-  @Input() options: any[];
+  @Input() options: SzOption<any, any>[];
 
   constructor(
     @Optional() @Self() public readonly ngControl: NgControl

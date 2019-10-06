@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { SzInputModule } from '@sahaz/mool';
+import { SzInputModule, SzCheckboxModule } from '@sahaz/mool';
 import { SzErrorModule } from '@sahaz/kand';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,7 @@ import { ConfigFormUiModule } from './config-form-ui/config-form-ui.module';
     SzSelectModule,
     ReactiveFormsModule,
     ConfigFormUiModule,
+    SzCheckboxModule,
     AppRoutingModule
   ],
   providers: [],

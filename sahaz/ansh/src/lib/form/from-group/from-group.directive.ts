@@ -5,8 +5,15 @@ import {
 } from '@angular/core';
 import { SzFormControl } from '@sahaz/kand';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SzInputComponent } from '@sahaz/mool/src/lib/input/input.component';
-import { SzSelectComponent } from '@sahaz/mool/src/lib/select/select.component';
+import {
+  SzInputComponent,
+  SzCheckboxComponent,
+  SzRadioGroupComponent,
+  SzRadioComponent,
+  SzSelectComponent,
+  SzAutoCompleteComponent,
+  SzTextareaComponent
+} from '@sahaz/mool';
 
 export const enum SzAction {
   Added = 'added',
@@ -39,10 +46,17 @@ export class SzActionOnControl {
 
 const components: { [type: string]: Type<SzFormElement> } = {
   input: SzInputComponent,
-  select: SzSelectComponent
+  select: SzSelectComponent,
+  autocomplete: SzAutoCompleteComponent,
+  textarea: SzTextareaComponent,
+  radio: SzRadioComponent,
+  checkbox: SzCheckboxComponent,
+  radiogroup: SzRadioGroupComponent
 };
 
-export type SzFormElement = SzInputComponent | SzSelectComponent;
+export type SzFormElement = SzInputComponent | SzSelectComponent
+  | SzCheckboxComponent | SzRadioComponent | SzAutoCompleteComponent
+  | SzTextareaComponent | SzRadioGroupComponent;
 
 @Directive({
   selector: '[szFormGroup]'
@@ -89,7 +103,7 @@ export class SzFromGroupDirective implements OnInit {
   }
 
   private assignControlPropsAndInsertView(): void {
-    if (this.component.instance instanceof SzSelectComponent) {
+    if (this.component.instance instanceof SzSelectComponent || this.component.instance instanceof SzAutoCompleteComponent) {
       this.component.instance.options = this.controlProps.options;
     }
     this.component.instance.formControlName = this.controlProps.formControlName;

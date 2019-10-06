@@ -1,4 +1,4 @@
-<mat-form-field matError>
+<mat-form-field [szError]="error">
     <mat-label *ngIf='label'>{{label}}</mat-label>
     <select matNativeControl
             [id]=id

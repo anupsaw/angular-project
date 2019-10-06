@@ -55,4 +55,59 @@ export class SzFormControl extends SzBaseFormControlProperty {
         control.element = 'select';
         return control;
     }
+
+    public static checkbox(
+        formControlName: string,
+        obj: Partial<SzFormControl> = {},
+        validators: ValidatorFn[] = [],
+        asyncValidators: AsyncValidatorFn[] = []
+    ): SzFormControl {
+        const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
+        control.element = 'checkbox';
+        return control;
+    }
+
+    public static radio(
+        formControlName: string,
+        obj: Partial<SzFormControl> = {},
+        validators: ValidatorFn[] = [],
+        asyncValidators: AsyncValidatorFn[] = []
+    ): SzFormControl {
+        const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
+        control.element = 'radio';
+        return control;
+    }
+
+    public static radioGroup(
+        formControlName: string,
+        obj: Partial<SzFormControl> = {},
+        validators: ValidatorFn[] = [],
+        asyncValidators: AsyncValidatorFn[] = []
+    ): SzFormControl {
+        const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
+        control.element = 'radiogroup';
+        return control;
+    }
+
+    public static autocomplete(
+        formControlName: string,
+        obj: Partial<SzFormControl> = {},
+        validators: ValidatorFn[] = [],
+        asyncValidators: AsyncValidatorFn[] = []
+    ): SzFormControl {
+        const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
+        control.element = 'autocomplete';
+        return control;
+    }
+
+    public static textarea(
+        formControlName: string,
+        obj: Partial<SzFormControl> = {},
+        validators: ValidatorFn[] = [],
+        asyncValidators: AsyncValidatorFn[] = []
+    ): SzFormControl {
+        const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
+        control.element = 'textarea';
+        return control;
+    }
 }

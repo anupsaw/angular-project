@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
   public formInit(): void {
     this.mainForm = this.fb.group({
+      name: ''
     });
   }
 

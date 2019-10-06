@@ -1,1 +1,10 @@
-<p>checkbox works!</p>
+<mat-checkbox [id]="id"
+              [labelPosition]="labelPosition"
+              [disabled]="disable"
+              [formControlName]="formControlName"
+              [name]="name || formControlName"
+              [required]="required"
+              [value]="value"
+              [ngClass]="classList">
+    {{label || placeholder}}
+</mat-checkbox>
