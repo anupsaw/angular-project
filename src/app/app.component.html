@@ -1,18 +1,7 @@
 <header class="test">Material Lib</header>
 <sz-form class="container"
          [formGroup]="mainForm">
-    <sz-form-group [formControls]="dynamicForm"
-                   >
-        <!-- <sz-input type="text"
-                  formControlName="name"
-                  label="Name"
-                  required="true">
-            <sz-error type='required'
-                      message='Hello Kya haal hai'>
-            </sz-error>
-
-        </sz-input> -->
-    </sz-form-group>
+    <app-config-form-ui></app-config-form-ui>
 
 </sz-form>
 <button (click)="printForm()">Print</button>

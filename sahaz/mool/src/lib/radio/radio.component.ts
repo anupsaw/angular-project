@@ -1,16 +1,17 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Optional, Self } from '@angular/core';
-import { SZ_CONTROL_CONTAINER_PROVIDER, SZ_NG_CONTROL_PROVIDER, SzBaseFormControl } from '@sahaz/kand';
+import { SzBaseFormControl, SZ_NG_CONTROL_PROVIDER, SZ_CONTROL_CONTAINER_PROVIDER } from '@sahaz/kand';
 import { NgControl } from '@angular/forms';
 
 @Component({
-  selector: 'sz-input',
-  templateUrl: './input.component.html',
+  selector: 'sz-radio',
+  templateUrl: './radio.component.html',
+  styles: [],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SZ_NG_CONTROL_PROVIDER],
   viewProviders: [SZ_CONTROL_CONTAINER_PROVIDER]
 })
-export class SzInputComponent extends SzBaseFormControl implements OnInit {
+export class SzRadioComponent extends SzBaseFormControl implements OnInit {
 
   constructor(
     @Optional() @Self() public readonly ngControl: NgControl
@@ -19,7 +20,6 @@ export class SzInputComponent extends SzBaseFormControl implements OnInit {
   }
 
   ngOnInit() {
-    this.errorMessage = 'Error';
   }
 
 }

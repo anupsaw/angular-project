@@ -21,7 +21,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
             }
         }
 
-        this.validators = this.required !== false ? [Validators.required, ...validators] : validators;
+        this.validators = this.required ? [Validators.required, ...validators] : validators;
         this.asyncValidators = asyncValidators;
     }
 

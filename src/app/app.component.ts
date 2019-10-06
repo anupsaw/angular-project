@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { DynamicForm } from './dynamic-form.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,6 @@ import { DynamicForm } from './dynamic-form.model';
 export class AppComponent implements OnInit {
 
   public mainForm: FormGroup;
-  public dynamicForm = DynamicForm.create();
   constructor(private readonly fb: FormBuilder) { }
 
   public ngOnInit(): void {
