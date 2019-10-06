@@ -1,10 +1,10 @@
 import { OnInit, OnChanges, AfterViewInit, HostListener } from '@angular/core';
-import { ControlValueAccessor, NgControl, ControlContainer, FormGroupDirective, FormGroupName } from '@angular/forms';
+import { ControlValueAccessor, NgControl, ControlContainer, FormGroupDirective, FormControlName } from '@angular/forms';
 import { SzBaseFormControlProperty } from './base-form-control-properties.abstract';
 import { BehaviorSubject } from 'rxjs';
 
 export const SZ_CONTROL_CONTAINER_PROVIDER = { provide: ControlContainer, useExisting: FormGroupDirective };
-export const SZ_NG_CONTROL_PROVIDER = { provide: NgControl, useExisting: FormGroupName };
+export const SZ_NG_CONTROL_PROVIDER = { provide: NgControl, useClass: FormControlName };
 export abstract class SzBaseFormControl extends SzBaseFormControlProperty
     implements OnInit, OnChanges, AfterViewInit, ControlValueAccessor {
 

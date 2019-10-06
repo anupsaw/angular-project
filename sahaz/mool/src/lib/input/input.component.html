@@ -1,5 +1,5 @@
 <div>
-    <mat-form-field szError>
+    <mat-form-field [szError]="error">
         <mat-label *ngIf='label'>{{label}}</mat-label>
         <input matInput
                [type]='type'
@@ -8,7 +8,8 @@
                [formControlName]="formControlName"
                [name]="name || formControlName"
                [required]="required"
-               [value]="value" />
+               [value]="value"
+               [ngClass]="classList" />
         <mat-error>{{errorMessage}}</mat-error>
         <mat-hint>{{hint}}</mat-hint>
     </mat-form-field>

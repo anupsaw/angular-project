@@ -1,14 +1,18 @@
 <header class="test">Material Lib</header>
-<div class="container"
-     [formGroup]="mainForm">
-    <sz-input type="text"
-              formControlName="name"
-              label="Name"
-              required="true">
-        <sz-error type='required'
-                       [message]='"errorMessage"'></sz-error>
-        <!-- <mat-error></mat-error> -->
-    </sz-input>
-    <!-- <sz-select formControlName="state"
-               label="State"></sz-select> -->
-</div>
+<sz-form class="container"
+         [formGroup]="mainForm">
+    <sz-form-group [formControls]="dynamicForm"
+                   >
+        <!-- <sz-input type="text"
+                  formControlName="name"
+                  label="Name"
+                  required="true">
+            <sz-error type='required'
+                      message='Hello Kya haal hai'>
+            </sz-error>
+
+        </sz-input> -->
+    </sz-form-group>
+
+</sz-form>
+<button (click)="printForm()">Print</button>

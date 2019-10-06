@@ -11,6 +11,7 @@ import { SzInputComponent } from './input.component';
   imports: [
     CommonModule, MatInputModule, MatFormFieldModule, MatIconModule, ReactiveFormsModule, SzErrorModule
   ],
-  exports: [SzInputComponent]
+  exports: [SzInputComponent],
+  entryComponents: [SzInputComponent]
 })
 export class SzInputModule { }

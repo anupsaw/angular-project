@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 import { MatBadgeModule } from '@angular/material';
 import { SzSelectModule } from '@sahaz/mool';
+import { SzFormModule } from '@sahaz/ansh';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatBadgeModule,
     SzErrorModule,
     SzInputModule,
+    SzFormModule,
     SzSelectModule,
     ReactiveFormsModule,
     AppRoutingModule

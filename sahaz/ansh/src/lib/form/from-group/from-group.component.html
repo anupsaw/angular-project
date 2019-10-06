@@ -1,0 +1,8 @@
+<ng-container [formGroup]="formGroup">
+    <ng-container *ngFor="let control of controls"
+                  szFormGroup
+                  [controlProps]="control"
+                  [controlFormGroup]="formGroup">
+    </ng-container>
+</ng-container>
+<ng-content></ng-content>
