@@ -16,13 +16,14 @@ export abstract class SzBaseFormControlProperty {
     @Input() public placeholder: string;
     @Input() public errorConfig: SzControlError[];
     @Input() public formControlName: string;
+    @Input() public classList: string;
 
     @Input() public set props(props: SzBaseFormControlProperty) {
 
         const exclude = ['props', 'errorMessage'];
         if (props) {
             for (const key in props) {
-                if (key && typeof props[key] !== 'function' && exclude.indexOf(key) !== -1) {
+                if (key && typeof props[key] !== 'function' && exclude.indexOf(key) === -1) {
                     this[key] = props[key];
                 }
             }

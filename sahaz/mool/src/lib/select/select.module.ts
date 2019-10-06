@@ -10,6 +10,7 @@ import { SzErrorModule } from '@sahaz/kand';
   imports: [
     CommonModule, MatInputModule, MatFormFieldModule, MatIconModule, ReactiveFormsModule, SzErrorModule
   ],
-  exports: [SzSelectComponent]
+  exports: [SzSelectComponent],
+  entryComponents: [SzSelectComponent]
 })
 export class SzSelectModule { }
