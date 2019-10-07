@@ -1,4 +1,4 @@
-<mat-form-field matError>
+<mat-form-field [szError]="error">
     <mat-label *ngIf='label'>{{label}}</mat-label>
     <select matNativeControl
             [id]=id
@@ -9,5 +9,7 @@
         <option *ngFor="let option of options"
                 [value]="option.value">{{option.description}}</option>
     </select>
-    <mat-error>errorMessage</mat-error>
+    <mat-error>{{errorMessage}}</mat-error>
+    <mat-hint>{{hint}}</mat-hint>
 </mat-form-field>
+<ng-content select="sz-error"></ng-content>

@@ -1,8 +1,0 @@
-@mixin sz-component-theme($component) {
-
-    .#{$component}-theme {
-        color: "red";
-        @content;
-    }
-
-}

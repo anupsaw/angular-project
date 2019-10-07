@@ -1,7 +1,0 @@
-@import '@sahaz/kand/kand.theme';
-@import './lib/form/form.component';
-
-
-@mixin sz-ansh-theme($theme) {
-    @include sz-form($theme);
-}

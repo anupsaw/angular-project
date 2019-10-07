@@ -12,6 +12,6 @@ const routes: Routes = [{ path: 'form-config', component: ConfigFormUiComponent 
   imports: [
     CommonModule, RouterModule.forChild(routes), SzFormModule, ReactiveFormsModule
   ],
-  exports: [ConfigFormUiComponent]
+  exports: [ConfigFormUiComponent, RouterModule]
 })
 export class ConfigFormUiModule { }

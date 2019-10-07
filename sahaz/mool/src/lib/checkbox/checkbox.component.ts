@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Optional, Self } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Optional, Self, Input } from '@angular/core';
 import { SzBaseFormControl, SZ_NG_CONTROL_PROVIDER, SZ_CONTROL_CONTAINER_PROVIDER } from '@sahaz/kand';
 import { NgControl } from '@angular/forms';
 
@@ -13,6 +13,7 @@ import { NgControl } from '@angular/forms';
 })
 export class SzCheckboxComponent extends SzBaseFormControl implements OnInit {
 
+  @Input() labelPosition = 'after';
   constructor(
     @Optional() @Self() public readonly ngControl: NgControl
   ) {

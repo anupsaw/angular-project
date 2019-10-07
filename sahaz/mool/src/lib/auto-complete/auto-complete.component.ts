@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Optional, Self } from '@angular/core';
-import { SzBaseFormControl, SZ_NG_CONTROL_PROVIDER, SZ_CONTROL_CONTAINER_PROVIDER } from '@sahaz/kand';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Optional, Self, Input } from '@angular/core';
+import { SzBaseFormControl, SZ_NG_CONTROL_PROVIDER, SZ_CONTROL_CONTAINER_PROVIDER, SzOption } from '@sahaz/kand';
 import { NgControl } from '@angular/forms';
 
 @Component({
@@ -12,6 +12,8 @@ import { NgControl } from '@angular/forms';
   viewProviders: [SZ_CONTROL_CONTAINER_PROVIDER]
 })
 export class SzAutoCompleteComponent extends SzBaseFormControl implements OnInit {
+
+  @Input() options: SzOption<any, any>[];
 
   constructor(
     @Optional() @Self() public readonly ngControl: NgControl
