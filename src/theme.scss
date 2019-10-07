@@ -16,8 +16,8 @@ $light;
 
     //  @debug keywords($themes);
     @each $theme in $themes {
-      //  @debug keywords($name);
-         $context: map-get($theme, 'context');
+        //  @debug keywords($name);
+        $context: map-get($theme, 'context');
         @debug 'test #{$context}';
 
         .#{$context} {
@@ -34,6 +34,28 @@ $light;
 
 }
 
+@mixin sz-take {
+    $split: 'sz-split';
+    $take: 'sz-take';
+
+    @for $i from 1 through 12 {
+        .#{$split}-#{$i} {
+            display: flex;
+            flex-direction: row;
+
+            @for $j from 1 through $i {
+                .#{$take}-#{$j} {
+                    display: flex;
+                    flex-direction: row;
+                    flex: 1 0 #{$j * (100/$i) + '%'}
+                }
+            }
+        }
+
+    }
+}
+
 //@include for-each($test1)
 @include for-each($dark, $light);
 @include for-each($light);
+@include sz-take();

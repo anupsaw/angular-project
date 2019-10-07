@@ -2,6 +2,16 @@ import { SzBaseFormControlProperty } from '../abstract/base-form-control-propert
 import { ValidatorFn, AsyncValidatorFn, Validators } from '@angular/forms';
 import { SzOption } from './option';
 
+export const enum SzFormControlType {
+    Input = 'input',
+    Select = 'select',
+    AutoComplete = 'autocomplete',
+    Radio = 'radio',
+    RadioGroup = 'radiogroup',
+    Checkbox = 'checkbox',
+    Textarea = 'textarea'
+}
+
 export class SzFormControl extends SzBaseFormControlProperty {
 
     public validators: ValidatorFn[];
@@ -41,7 +51,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
         asyncValidators: AsyncValidatorFn[] = []
     ): SzFormControl {
         const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
-        control.element = 'input';
+        control.element = SzFormControlType.Input;
         return control;
     }
 
@@ -52,7 +62,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
         asyncValidators: AsyncValidatorFn[] = []
     ): SzFormControl {
         const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
-        control.element = 'select';
+        control.element = SzFormControlType.Select;
         return control;
     }
 
@@ -63,7 +73,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
         asyncValidators: AsyncValidatorFn[] = []
     ): SzFormControl {
         const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
-        control.element = 'checkbox';
+        control.element = SzFormControlType.Checkbox;
         return control;
     }
 
@@ -74,7 +84,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
         asyncValidators: AsyncValidatorFn[] = []
     ): SzFormControl {
         const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
-        control.element = 'radio';
+        control.element = SzFormControlType.Radio;
         return control;
     }
 
@@ -85,7 +95,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
         asyncValidators: AsyncValidatorFn[] = []
     ): SzFormControl {
         const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
-        control.element = 'radiogroup';
+        control.element = SzFormControlType.RadioGroup;
         return control;
     }
 
@@ -96,7 +106,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
         asyncValidators: AsyncValidatorFn[] = []
     ): SzFormControl {
         const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
-        control.element = 'autocomplete';
+        control.element = SzFormControlType.AutoComplete;
         return control;
     }
 
@@ -107,7 +117,7 @@ export class SzFormControl extends SzBaseFormControlProperty {
         asyncValidators: AsyncValidatorFn[] = []
     ): SzFormControl {
         const control = new SzFormControl({ formControlName, ...obj }, validators, asyncValidators);
-        control.element = 'textarea';
+        control.element = SzFormControlType.Textarea;
         return control;
     }
 }

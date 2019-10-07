@@ -8,11 +8,12 @@ import { SzErrorModule } from '@sahaz/kand';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MatBadgeModule } from '@angular/material';
+import { MatBadgeModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { SzSelectModule } from '@sahaz/mool';
 import { SzFormModule } from '@sahaz/ansh';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfigFormUiModule } from './config-form-ui/config-form-ui.module';
+import { AddFormControlModule } from './add-form-control/add-form-control.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { ConfigFormUiModule } from './config-form-ui/config-form-ui.module';
     SzFormModule,
     SzSelectModule,
     ReactiveFormsModule,
+    MatIconModule,
     ConfigFormUiModule,
+    AddFormControlModule,
+    MatButtonModule,
     SzCheckboxModule,
     AppRoutingModule
   ],

@@ -1,8 +1,13 @@
 <header class="test">Material Lib</header>
-<sz-form class="container"
+<div class='sz-split-8'>
+    <div class="sz-take-6"
          [formGroup]="mainForm">
-    <sz-checkbox formControlName='name'></sz-checkbox>
-    <app-config-form-ui></app-config-form-ui>
+        <app-add-form-control></app-add-form-control>
+    </div>
+    <div class="sz-take-2 sz-flex-column">
+        <app-config-form-ui class="sz-flex-column"></app-config-form-ui>
+    </div>
 
-</sz-form>
-<button (click)="printForm()">Print</button>
+</div>
+
+<!-- <button (click)="printForm()">Print</button> -->
