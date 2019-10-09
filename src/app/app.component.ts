@@ -13,18 +13,32 @@ export class AppComponent implements OnInit {
   public mainForm: FormGroup;
   public subscription: Subscription;
   constructor(private readonly fb: FormBuilder) { }
-  drawArea = document.querySelector('#draw');
+  drawArea: HTMLElement;
   public ngOnInit(): void {
     this.formInit();
+    this.drawArea = document.querySelector('#draw');
+    const div = document.createElement('div');
+    div.style.border = '1px solid black';
+    div.style.position = 'relative';
+    let mouseDownData: MouseEvent;
     fromEvent(this.drawArea, 'mousedown').subscribe((data: MouseEvent) => {
-
+      div.style.top = `${data.clientY}px`;
+      div.style.left = `${data.clientX}px`;
+      mouseDownData = data;
       this.subscription = fromEvent(this.drawArea, 'mousemove').subscribe((val: MouseEvent) => {
-        console.log(val);
+        div.style.height = `${val.clientY - mouseDownData.clientY}px`;
+        div.style.width = `${val.clientX - mouseDownData.clientX}px`;
+        this.drawArea.appendChild(div);
       });
       console.log(data);
     });
 
     fromEvent(this.drawArea, 'mouseup').subscribe((data: MouseEvent) => {
+
+      div.style.height = `${data.clientY - mouseDownData.clientY}px`;
+      div.style.width = `${data.clientX - mouseDownData.clientX}px`;
+
+      this.drawArea.appendChild(div);
       this.subscription.unsubscribe();
       console.log(data);
     });
