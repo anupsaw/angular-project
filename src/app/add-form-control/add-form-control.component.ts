@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { SzFromGroupComponent } from '@sahaz/ansh';
-import { SzFormControl } from '@sahaz/kand';
+import { ConfigFrom } from '../config-form-ui/config-form.model';
 
 @Component({
   selector: 'app-add-form-control',
@@ -29,8 +29,16 @@ export class AddFormControlComponent implements OnInit {
 
   onAddControlClick() {
     console.log(this.pageFormGroupControls);
-    this.pageFormGroupControls.removeControl(SzFormControl.input('name', { label: 'Name', disable: true }));
-    this.pageFormGroupControls.addControl(SzFormControl.input('name', { label: 'Name', disable: true }));
+    // this.pageFormGroupControls.removeControl(SzFormControl.input('name', { label: 'Name', disable: true }));
+    // this.pageFormGroupControls.addControl(SzFormControl.input('name', { label: 'Name', disable: true }));
+
+    // const element = SzFormControl.select('element', { label: 'Element Type', required: true });
+    // const formControlName = SzFormControl.input('formControlName', {
+    //   label: 'Form Control Name',
+    //   required: true, hint: 'this name will be control form name'
+    // });
+    this.pageFormGroupControls.addControls(ConfigFrom.create() as any);
+
   }
 
 }

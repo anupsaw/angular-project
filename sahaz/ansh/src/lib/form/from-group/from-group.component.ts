@@ -77,7 +77,7 @@ export class SzFromGroupComponent implements OnInit {
     }
   }
 
-  public addControls(controls: SzDynamicModel): void {
+  public addControls(controls: { [key: string]: SzFormControl }): void {
     if (controls) {
       for (const key in controls) {
         if (key) {
