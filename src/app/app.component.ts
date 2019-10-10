@@ -12,10 +12,30 @@ export class AppComponent implements OnInit {
 
   public mainForm: FormGroup;
   public subscription: Subscription;
+  public newControl: { type: string };
+
   constructor(private readonly fb: FormBuilder) { }
   drawArea: HTMLElement;
   public ngOnInit(): void {
     this.formInit();
+
+  }
+
+  public formInit(): void {
+    this.mainForm = this.fb.group({
+      name: ''
+    });
+  }
+
+  public printForm(): void {
+    console.log(this.mainForm);
+  }
+
+  public onMenuItemClick(type: string): void {
+    this.newControl = { type };
+  }
+
+  public draw(): void {
     this.drawArea = document.querySelector('#draw');
     const div = document.createElement('div');
     div.style.border = '1px solid black';
@@ -42,15 +62,5 @@ export class AppComponent implements OnInit {
       this.subscription.unsubscribe();
       console.log(data);
     });
-  }
-
-  public formInit(): void {
-    this.mainForm = this.fb.group({
-      name: ''
-    });
-  }
-
-  public printForm(): void {
-    console.log(this.mainForm);
   }
 }

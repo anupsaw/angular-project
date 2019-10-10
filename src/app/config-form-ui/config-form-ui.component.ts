@@ -18,4 +18,8 @@ export class ConfigFormUiComponent implements OnInit {
   ngOnInit() {
   }
 
+  public onSave(): void {
+    console.log(this.form);
+  }
+
 }
