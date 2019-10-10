@@ -4,14 +4,24 @@
 
     width: 100%;
 
-    header {
+    header.sz-main-header {
         height: 80px;
         background-color: cornflowerblue;
         padding: 0 20px;
         box-sizing: border-box;
         align-items: center;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         width: 100%;
+        display: flex;
+
+        .sz-spacer {
+            flex: 1 1 auto;
+        }
+
+        .sz-nav-list {
+            display: flex;
+        }
+
     }
 
     .container {
@@ -19,6 +29,7 @@
         align-items: center;
         flex: 1 0 auto;
         width: 100%;
+
         p {
             color: rgba(0, 0, 0, 0.6);
         }

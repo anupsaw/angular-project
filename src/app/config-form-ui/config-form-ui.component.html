@@ -1,3 +1,13 @@
-<sz-form class="sz-flex-column" [formGroup]="form">
-    <sz-form-group class="sz-flex-column" [formControls]="formControls"></sz-form-group>
+<sz-form class="sz-flex-column"
+         [formGroup]="form">
+    <sz-form-group class="sz-flex-column"
+                   [formControls]="formControls"></sz-form-group>
 </sz-form>
+
+<button mat-button
+        (click)="onSave()"
+        value="Add Control"
+        color="primary">
+    <mat-icon>add_circle_outline</mat-icon>
+    Save
+</button>
