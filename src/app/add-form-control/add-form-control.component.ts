@@ -55,7 +55,7 @@ export class AddFormControlComponent implements OnInit, OnChanges {
   addNewControl(type: string): void {
 
     if (type) {
-      const control = SzFormControl[type]('_new_control_', { disable: true, label: '_click_to_edit_properties_' });
+      const control = SzFormControl[type]('_new_control_', { disable: true, label: '_click_to_edit_properties_' , id: 'new_1' });
       console.log(control);
       this.pageFormGroupControls.addControl(control);
     }
