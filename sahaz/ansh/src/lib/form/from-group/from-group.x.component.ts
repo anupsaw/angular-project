@@ -40,6 +40,7 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
   public focusChanges = this.focusChangeEvent.asObservable();
   public formGroup: FormGroup;
   public index: number;
+  public id: string;
 
   @ViewChild('formContent', { read: ViewContainerRef, static: false }) public container: ViewContainerRef;
   @Input() public formControls: { [key: string]: SzFormControl };
@@ -64,7 +65,7 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit() {
-
+    this.createControls(this.formControls);
   }
 
   // TODO : need to include formArray
@@ -91,7 +92,7 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
 
   private createControls(controls: { [key: string]: SzFormControl | SzFormGroup }): void {
     for (const key in controls) {
-      if (key && controls[key] instanceof SzFormControl) {
+      if (key && (controls[key] instanceof SzFormControl || controls[key] instanceof SzFormGroup)) {
         this.createControl(controls[key]);
       }
     }
@@ -118,19 +119,27 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
     ref.instance.groupName = props.formGroupName;
     ref.instance.flexDirection = props.flexDirection;
     ref.instance.index = props.index;
+    ref.instance.id = props.id;
 
     if (!props.index && props.index !== 0) {
       props.index = this.container.length;
     }
 
     this.container.insert(ref.hostView);
-    this.componentRef.set(name, ref);
+    this.componentRef.set(props.id, ref);
     console.log(this.componentRef);
   }
 
   private create(component: Type<SzFormElement>, props: SzFormControl): void {
     const componentRef = this.resolver.resolveComponentFactory<SzFormElement>(component);
-    const ref = componentRef.create(this.container.injector);
+    let ref: ComponentRef<SzFormElement>;
+    let container = this.container;
+    if (props.group) {
+      const x = this.componentRef.get(props.group.id) as ComponentRef<SzFromGroupXComponent>;
+      container = x.instance.container;
+    }
+
+    ref = componentRef.create(container.injector);
 
     if (ref.instance instanceof SzSelectComponent) {
       ref.instance.options = props.options;
@@ -144,9 +153,10 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
     (ref.instance.ngControl as any).control = this.formGroup.get(name);
 
     if (!props.index && props.index !== 0) {
-      props.index = this.container.length;
+      props.index = container.length;
     }
-    this.container.insert(ref.hostView);
+
+    container.insert(ref.hostView);
     this.componentRef.set(name, ref);
     console.log(this.componentRef);
   }

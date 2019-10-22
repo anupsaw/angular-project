@@ -2,6 +2,9 @@ export type SzDirectionType = 'row' | 'column';
 
 export class SzFormGroup {
 
+    private static groupCounter = 0;
+    public element = 'group';
+    public id = `sz-form-group-dynamic-${SzFormGroup.groupCounter++}`;
     public formGroupName: string;
     public flexDirection: SzDirectionType;
     public index: number;
@@ -18,8 +21,8 @@ export class SzFormGroup {
     }
 
     public static create(
-        formGroupName: string,
-        flexDirection: SzDirectionType = 'row',
+        formGroupName?: string,
+        flexDirection: SzDirectionType = 'column',
         index = 1
     ): SzFormGroup {
         return new SzFormGroup({ formGroupName, flexDirection, index });

@@ -4,7 +4,7 @@ export class ConfigFrom {
 
     public inputType = [{ value: 'text', description: 'Text' }];
 
-    public addressGroup = SzFormGroup.create('addressGroup');
+    public addressGroup = SzFormGroup.create(null, 'row', 2);
 
     public element = SzFormControl.select('element', { label: 'Element Type', required: true });
     public formControlName = SzFormControl.input('formControlName', {
