@@ -1,4 +1,4 @@
-import { OnInit, OnChanges, AfterViewInit, HostListener } from '@angular/core';
+import { OnInit, OnChanges, AfterViewInit, HostListener, HostBinding } from '@angular/core';
 import { ControlValueAccessor, NgControl, ControlContainer, FormGroupDirective, FormControlName } from '@angular/forms';
 import { SzBaseFormControlProperty } from './base-form-control-properties.abstract';
 import { BehaviorSubject } from 'rxjs';
@@ -21,9 +21,11 @@ export abstract class SzBaseFormControl extends SzBaseFormControlProperty
         this.focusChangeEvent.next(true);
     }
 
+    @HostBinding('class') get hostClass() { return this.classList; }
+
     constructor(public readonly ngControl: NgControl) {
         super();
-
+        console.log(this.ngControl);
         if (this.ngControl) {
             this.ngControl.valueAccessor = this;
         }

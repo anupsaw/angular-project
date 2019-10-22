@@ -21,7 +21,7 @@ form {
 sz-input,
 sz-select,
 sz-auto-complete {
-    width: 100%;
+    width: inherit;
     display: flex;
     flex-direction: column
 }

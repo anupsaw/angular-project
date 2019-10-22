@@ -1,6 +1,7 @@
 import { SzBaseFormControlProperty } from '../abstract/base-form-control-properties.abstract';
 import { ValidatorFn, AsyncValidatorFn, Validators } from '@angular/forms';
 import { SzOption } from './option';
+import { SzFormGroup } from './group';
 
 export const enum SzFormControlType {
     Input = 'input',
@@ -9,7 +10,8 @@ export const enum SzFormControlType {
     Radio = 'radio',
     RadioGroup = 'radiogroup',
     Checkbox = 'checkbox',
-    Textarea = 'textarea'
+    Textarea = 'textarea',
+    Group = 'group'
 }
 
 export class SzFormControl extends SzBaseFormControlProperty {
@@ -18,6 +20,8 @@ export class SzFormControl extends SzBaseFormControlProperty {
     public asyncValidators: AsyncValidatorFn[];
     public element: string;
     public options: SzOption<any, any>[];
+    public group: SzFormGroup;
+    public index: number;
 
     private constructor(
         obj: Partial<SzBaseFormControlProperty> = {},
