@@ -1,7 +1,7 @@
 import {
   Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy,
   Input, Optional, Host, SkipSelf, ChangeDetectorRef, ComponentRef,
-  ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterViewInit, Type, Output, EventEmitter, HostBinding
+  ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterViewInit, Type, Output, EventEmitter
 } from '@angular/core';
 import { SzFormControl, SzFormControlType, SzFormGroup, SzDirectionType } from '@sahaz/kand';
 import { ControlContainer, FormGroup, FormGroupDirective, FormControl, Validators } from '@angular/forms';
@@ -11,6 +11,7 @@ import {
   SzInputComponent, SzSelectComponent, SzAutoCompleteComponent,
   SzTextareaComponent, SzRadioComponent, SzCheckboxComponent, SzRadioGroupComponent
 } from '@sahaz/mool';
+import { SzControlGroupComponent } from '../../control-group/control-group.component';
 
 export type SzElement = SzInputComponent;
 
@@ -34,7 +35,7 @@ const components: { [type: string]: Type<SzFormElement> } = {
 })
 export class SzFromGroupXComponent implements OnInit, AfterViewInit {
 
-  private componentRef = new Map<string, ComponentRef<SzFormElement | SzFromGroupXComponent>>();
+  private componentRef = new Map<string, ComponentRef<SzFormElement | SzControlGroupComponent>>();
   private focusChangeEvent = new BehaviorSubject({ name: '', focus: false });
 
   public focusChanges = this.focusChangeEvent.asObservable();
@@ -48,10 +49,6 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
   @Input() public flexDirection: SzDirectionType;
 
   @Output() action = new EventEmitter<SzActionOnControl>();
-
-  @HostBinding('class') public get flexDirectionClass(): string {
-    return this.flexDirection === 'row' ? 'sz-flex-row' : 'sz-flex-column';
-  }
 
   constructor(
     @Optional() @Host() @SkipSelf() private parent: ControlContainer,
@@ -105,18 +102,16 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
       this.create(components[control.element], control);
       // throw new Error(`Invalid control type`);
     } else if (control instanceof SzFormGroup) {
-      this.createGroup(SzFromGroupXComponent, control);
+      this.createGroup(SzControlGroupComponent, control);
     }
 
     this.refresh();
   }
 
-  private createGroup(component: Type<SzFromGroupXComponent>, props: SzFormGroup): void {
-    const componentRef = this.resolver.resolveComponentFactory<SzFromGroupXComponent>(component);
+  private createGroup(component: Type<SzControlGroupComponent>, props: SzFormGroup): void {
+    const componentRef = this.resolver.resolveComponentFactory<SzControlGroupComponent>(component);
     const ref = componentRef.create(this.container.injector);
 
-    ref.instance.formControls = {};
-    ref.instance.groupName = props.formGroupName;
     ref.instance.flexDirection = props.flexDirection;
     ref.instance.index = props.index;
     ref.instance.id = props.id;
@@ -135,7 +130,7 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
     let ref: ComponentRef<SzFormElement>;
     let container = this.container;
     if (props.group) {
-      const x = this.componentRef.get(props.group.id) as ComponentRef<SzFromGroupXComponent>;
+      const x = this.componentRef.get(props.group.id) as ComponentRef<SzControlGroupComponent>;
       container = x.instance.container;
     }
 
@@ -179,7 +174,7 @@ export class SzFromGroupXComponent implements OnInit, AfterViewInit {
 
   public removeControl(formControl: SzFormControl | { [key: string]: SzFormControl }): void {
 
-    if (formControl) {
+    if (!formControl) {
       throw new Error('Not a valid control');
     }
 

@@ -41,20 +41,32 @@
         justify-content: space-between;
         width: 100%;
 
-        .sz-config-section {
-            width: 18%;
-            min-width: 150px;
-            margin-left: 40px;
-            font-size: 10px;
-            box-sizing: border-box;
-            padding-right:20px;
-            // height: 70vh;
-            overflow: auto
-        }
         .sz-control-section {
             margin-left: 50px;
             width: 78%;
-            max-width: 800px;;
+            max-width: 800px;
+            ;
         }
+    }
+
+    .sz-edit-form-control-section {
+        position: absolute;
+        right: 0;
+        top: 0;
+        box-shadow: -1px 0px 5px 1px grey;
+        max-height: 100vh;
+        overflow: auto;
+        background: #FFF;
+    }
+
+    .sz-config-section {
+        width: 18%;
+        min-width: 150px;
+        margin-left: 40px;
+        font-size: 10px;
+        box-sizing: border-box;
+        padding-right: 20px;
+        // height: 70vh;
+        overflow: auto
     }
 }

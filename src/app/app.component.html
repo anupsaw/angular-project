@@ -24,13 +24,15 @@
                           (controlClick)="onControlClick($event)">
     </app-add-form-control>
 
+</div>
+
+<div class="sz-edit-form-control-section">
     <app-config-form-ui *ngIf="showControlConfig"
                         class="sz-config-section"
                         [data]="controlProperties"
                         (update)="onUpdate($event)"
                         (cancel)="onCancel($event)">
     </app-config-form-ui>
-
 </div>
 
 <!-- <button (click)="printForm()">Print</button> -->

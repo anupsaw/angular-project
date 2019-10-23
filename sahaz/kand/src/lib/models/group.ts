@@ -5,7 +5,7 @@ export class SzFormGroup {
     private static groupCounter = 0;
     public element = 'group';
     public id = `sz-form-group-dynamic-${SzFormGroup.groupCounter++}`;
-    public formGroupName: string;
+    public formGroupName?: string;
     public flexDirection: SzDirectionType;
     public index: number;
 

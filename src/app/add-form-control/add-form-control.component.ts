@@ -1,6 +1,6 @@
 import {
   Component, OnInit, Input, SimpleChanges, OnChanges,
-  Inject, ChangeDetectorRef, ViewChild, ElementRef, EventEmitter, Output
+  Inject, ChangeDetectorRef, ViewChild, ElementRef, EventEmitter, Output, ComponentFactoryResolver, ViewContainerRef, AfterViewInit, ComponentRef
 } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
@@ -8,20 +8,25 @@ import { ConfigFrom } from '../config-form-ui/config-form.model';
 import { SzFormControl, SzBaseComponent, SzFormGroup } from '@sahaz/kand';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 import { SzFromGroupXComponent } from '@sahaz/ansh/src/lib/form/from-group/from-group.x.component';
+import { ControlActionButtonComponent } from './control-action-button.component';
+import { Subscription } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-add-form-control',
   templateUrl: './add-form-control.component.html',
   styleUrls: ['./add-form-control.component.scss']
 })
-export class AddFormControlComponent extends SzBaseComponent implements OnInit, OnChanges {
+export class AddFormControlComponent extends SzBaseComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() form: FormGroup;
   @Input() control: { type: string };
   @Input() updatedControl: SzFormControl;
+  private ref: ComponentRef<ControlActionButtonComponent>;
   fromArrayControl: FormArray;
   formControls: any = {};
   dynamicControlCounter = 0;
+  private currentId: string;
   private dynamicControlMap = new Map<string, SzFormControl>();
 
   @Output() controlClick = new EventEmitter<any>();
@@ -30,13 +35,19 @@ export class AddFormControlComponent extends SzBaseComponent implements OnInit, 
   constructor(
     @Inject(DOCUMENT) public readonly document: Document,
     private cd: ChangeDetectorRef,
-    private ele: ElementRef
+    private resolver: ComponentFactoryResolver,
+    private ele: ElementRef,
+    private container: ViewContainerRef
   ) { super(); }
 
   ngOnInit() {
     this.initForm();
     this.onControlClick();
 
+  }
+
+  ngAfterViewInit() {
+    console.log(this.container, 'Anup Saw');
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -83,7 +94,7 @@ export class AddFormControlComponent extends SzBaseComponent implements OnInit, 
 
     if (type !== 'group') {
       const control = SzFormControl[type](`_new_control_${this.dynamicControlCounter}`, {
-        readonly: true, label: `_click_to_edit_properties_${this.dynamicControlCounter}`,
+        label: `_click_to_edit_properties_${this.dynamicControlCounter}`,
         id: `sz-dynamic-${this.dynamicControlCounter}`, classList: 'sz-disabled-dynamic-field'
       });
       console.log(control);
@@ -104,7 +115,7 @@ export class AddFormControlComponent extends SzBaseComponent implements OnInit, 
   }
 
   public updateControlEvent(): void {
-    const selectors = this.ele.nativeElement.querySelectorAll('input, select');
+    const selectors = this.ele.nativeElement.querySelectorAll('sz-input ,sz-select');
     selectors.forEach((selector: HTMLElement) => {
 
       if (!selector.hasAttribute('sz-dynamic-identifier')) {
@@ -116,15 +127,33 @@ export class AddFormControlComponent extends SzBaseComponent implements OnInit, 
         // element && (element.style.cursor = 'pointer');
 
         // this.zone.run(() => {
-        fromEvent(selector, 'click').subscribe((event: Event) => {
-          console.log((event.currentTarget as any).getAttribute('sz-dynamic-identifier'));
-          const controlId = (event.currentTarget as any).getAttribute('sz-dynamic-identifier');
-          const val = this.dynamicControlMap.get(controlId);
-          console.log(val);
-          this.controlClick.emit(val);
-          this.cd.markForCheck();
-          //   });
-        });
+        const subscription = fromEvent(selector, 'mouseenter').pipe(
+          distinctUntilChanged((curr: MouseEvent) => {
+            const id = (curr.target as HTMLElement).getAttribute('sz-dynamic-identifier');
+            return this.currentId === id;
+          }
+          )).subscribe((event: Event) => {
+
+            console.log('logged');
+
+            const controlId = (event.currentTarget as any).getAttribute('sz-dynamic-identifier');
+            this.currentId = controlId;
+            this.setSubscriptionWithKey(controlId, subscription);
+            const val = this.dynamicControlMap.get(controlId);
+            this.onHover(val, selector, subscription);
+            this.cd.markForCheck();
+
+            // const sub = fromEvent(selector, 'mouseleave').subscribe((event: Event) => {
+
+            //   sub.unsubscribe();
+            //   selector.querySelector('app-control-actions').remove();
+            //   this.ref.destroy();
+            //   this.ref = null;
+            //   this.currentId = null;
+            //   this.cd.markForCheck();
+            //   //   });
+            // });
+          });
 
         console.log(selector);
       }
@@ -133,6 +162,35 @@ export class AddFormControlComponent extends SzBaseComponent implements OnInit, 
     this.dynamicControlCounter++;
 
     console.log(this.formControls);
+  }
+
+  public onHover(val: SzFormControl, selector: HTMLElement, subs: Subscription): boolean {
+
+    if (!this.ref) {
+      const ref = this.resolver.resolveComponentFactory(ControlActionButtonComponent);
+      this.ref = ref.create(this.container.injector);
+      // this.ref = this.container.createComponent(ref);
+    }
+    console.log(selector);
+    this.ref.location.nativeElement.style.top = `${selector.getClientRects()[0].top}px`;
+    this.ref.location.nativeElement.style.left = `${selector.getClientRects()[0].right - 50}px`;
+    selector.appendChild(this.ref.location.nativeElement);
+    this.ref.instance.onAddClick = () => { this.controlClick.emit(val); };
+
+    this.ref.instance.onDeleteClick = () => {
+      this.pageFormGroupControls.removeControl(val);
+      subs.unsubscribe(); this.ref.destroy();
+      this.ref = null;
+    };
+
+    this.ref.instance.onCancelClick = () => {
+      selector.querySelector('app-control-actions').remove();
+      this.ref.destroy();
+      this.ref = null;
+      this.currentId = null;
+    };
+    this.ref.hostView.detectChanges();
+    return true;
   }
 
   findParent(ele: HTMLElement, search: string): HTMLElement {
