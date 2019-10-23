@@ -11,15 +11,29 @@ export abstract class SzBaseComponent implements OnDestroy {
         this.subscriptions.set(`${SzBaseComponent.subscriptionCount}`, subs);
     }
 
-    public ngOnDestroy(): void { }
+    public setSubscriptionWithKey(key: string, subs: Subscription): void {
+        this.subscriptions.set(key, subs);
+        this.incrementCounter();
+    }
 
-    public unsubscribe(): void {
-        // tslint:disable-next-line: variable-name
-        this.subscriptions.forEach((subs: Subscription, _key: string) => {
-            subs.unsubscribe();
-            this.decrementCounter();
-        });
-        this.subscriptions.clear();
+    public ngOnDestroy(): void { this.unsubscribe(); }
+
+    public unsubscribe(...keys: string[]): void {
+        if (keys) {
+            keys.forEach((item: string) => {
+                const subs = this.subscriptions.get(item);
+                subs && subs.unsubscribe();
+                this.subscriptions.delete(item);
+                this.decrementCounter();
+            });
+        } else {
+            // tslint:disable-next-line: variable-name
+            this.subscriptions.forEach((subs: Subscription, _key: string) => {
+                subs.unsubscribe();
+                this.decrementCounter();
+            });
+            this.subscriptions.clear();
+        }
     }
 
     private incrementCounter(): void {

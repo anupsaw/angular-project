@@ -8,7 +8,8 @@
            [name]="name || formControlName"
            [required]="required"
            [value]="value"
-           [ngClass]="classList" />
+           [ngClass]="classList"
+           [readonly]="readonly" />
     <mat-error>{{errorMessage}}</mat-error>
     <mat-hint>{{hint}}</mat-hint>
 </mat-form-field>

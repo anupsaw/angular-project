@@ -9,19 +9,30 @@
                     (click)="onMenuItemClick('input')">Input</button>
             <button mat-menu-item
                     (click)="onMenuItemClick('select')">Select</button>
+            <button mat-menu-item
+                    (click)="onMenuItemClick('group')">Select</button>
         </mat-menu>
         <a mat-button>Add Form</a>
     </div>
 </header>
-<div class='sz-split-8'>
-    <div class="sz-take-6"
-         [formGroup]="mainForm"
-         id="draw">
-        <app-add-form-control [form]="mainForm" [control]="newControl"></app-add-form-control>
-    </div>
-    <div class="sz-take-2 sz-flex-column">
-        <app-config-form-ui class="sz-flex-column"></app-config-form-ui>
-    </div>
+<div class='sz-form-container'>
+
+    <app-add-form-control [form]="mainForm"
+                          class="sz-control-section"
+                          [control]="newControl"
+                          [updatedControl]="updatedControlProperty"
+                          (controlClick)="onControlClick($event)">
+    </app-add-form-control>
+
+</div>
+
+<div class="sz-edit-form-control-section">
+    <app-config-form-ui *ngIf="showControlConfig"
+                        class="sz-config-section"
+                        [data]="controlProperties"
+                        (update)="onUpdate($event)"
+                        (cancel)="onCancel($event)">
+    </app-config-form-ui>
 </div>
 
 <!-- <button (click)="printForm()">Print</button> -->

@@ -171,10 +171,10 @@ export class SzFromGroupDirective implements OnInit, OnChanges {
     const component = this.resolver.resolveComponentFactory(components[this.controlProps.element]);
     this.component = component.create(this.container.injector);
     this.assignControlPropsAndInsertView();
-    this.addDynamicPropsToControl();
+    // this.addDynamicPropsToControl();
   }
 
-  private addDynamicPropsToControl(): void {
+  public addDynamicPropsToControl(): void {
     this.controlProps.showControl = () => 1;
     this.controlProps.hideControl = () => 1;
     this.controlProps.destroyControl = () => 1;
@@ -184,6 +184,7 @@ export class SzFromGroupDirective implements OnInit, OnChanges {
     if (this.component.instance instanceof SzSelectComponent || this.component.instance instanceof SzAutoCompleteComponent) {
       this.component.instance.options = this.controlProps.options;
     }
+
     this.component.instance.formControlName = this.controlProps.formControlName;
     this.component.instance.value = this.controlProps.value || '';
     this.component.instance.props = this.controlProps;

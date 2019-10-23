@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 import { Subscription } from 'rxjs';
+import { SzFormControl } from '@sahaz/kand';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,10 @@ export class AppComponent implements OnInit {
   public mainForm: FormGroup;
   public subscription: Subscription;
   public newControl: { type: string };
+  public controlProperties: SzFormControl;
+  public updatedControlProperty: SzFormControl;
+
+  public showControlConfig: boolean;
 
   constructor(private readonly fb: FormBuilder) { }
   drawArea: HTMLElement;
@@ -33,6 +38,22 @@ export class AppComponent implements OnInit {
 
   public onMenuItemClick(type: string): void {
     this.newControl = { type };
+  }
+
+  public onUpdate(val: any) {
+    this.updatedControlProperty = val;
+  }
+  public onControlClick(val: any): void {
+    console.log(val);
+    this.showControlConfig = true;
+    setTimeout(() => {
+      this.controlProperties = val;
+    }, 100);
+
+  }
+
+  public onCancel(): void {
+    this.showControlConfig = false;
   }
 
   public draw(): void {

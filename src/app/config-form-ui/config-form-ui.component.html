@@ -1,7 +1,16 @@
+<button mat-button
+        class="sz-close"
+        (click)="onClose()"
+        color="primary">
+    <mat-icon>cancel</mat-icon>
+    close
+</button>
+
 <sz-form class="sz-flex-column"
          [formGroup]="form">
-    <sz-form-group class="sz-flex-column"
-                   [formControls]="formControls"></sz-form-group>
+    <sz-form-group-x class="sz-flex-column"
+                     [formControls]="formControls">
+    </sz-form-group-x>
 </sz-form>
 
 <button mat-button

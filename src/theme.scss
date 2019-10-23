@@ -47,7 +47,8 @@ $light;
                 .#{$take}-#{$j} {
                     display: flex;
                     flex-direction: row;
-                    flex: 1 0 #{$j * (100/$i) + '%'}
+                    flex: 1 0 #{$j * (100/$i) + '%'};
+                    justify-content: center;
                 }
             }
         }
